@@ -480,7 +480,6 @@ export default function Home() {
                 'https://res.cloudinary.com/dz3cfmi5k/image/upload/q_auto/f_auto/v1775847535/picture_316_of_317_fxghvf.jpg',
                 'https://res.cloudinary.com/dz3cfmi5k/image/upload/q_auto/f_auto/v1775847533/picture_216_of_317_pqga3h.jpg',
                 'https://res.cloudinary.com/dz3cfmi5k/image/upload/q_auto/f_auto/v1775847539/picture_257_of_317_acawqz.jpg',
-              
               ]}
             />
           </div>

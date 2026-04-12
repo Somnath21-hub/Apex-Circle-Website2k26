@@ -155,52 +155,54 @@ export default function Gallery() {
           </div>
 
           <div className="grid grid-cols-1 md:grid-cols-2 gap-8 md:gap-12">
-            {videoHighlights.map((video: { title: string; duration: string; thumb: string }, i: number) => (
-              <motion.div
-                key={i}
-                initial={{ opacity: 0, y: 30 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true }}
-                transition={{ delay: i * 0.2 }}
-                className="group relative aspect-video bg-black border border-white/10 overflow-hidden cursor-pointer shadow-2xl hover:shadow-primary/20 hover:border-primary/50 transition-all duration-700"
-              >
-                {/* Video Thumbnail with subtle dark overlay */}
-                <img
-                  src={video.thumb}
-                  alt={video.title}
-                  className="w-full h-full object-cover opacity-60 group-hover:opacity-40 group-hover:scale-110 transition-all duration-1000 ease-out"
-                  referrerPolicy="no-referrer"
-                />
+            {videoHighlights.map(
+              (video: { title: string; duration: string; thumb: string }, i: number) => (
+                <motion.div
+                  key={i}
+                  initial={{ opacity: 0, y: 30 }}
+                  whileInView={{ opacity: 1, y: 0 }}
+                  viewport={{ once: true }}
+                  transition={{ delay: i * 0.2 }}
+                  className="group relative aspect-video bg-black border border-white/10 overflow-hidden cursor-pointer shadow-2xl hover:shadow-primary/20 hover:border-primary/50 transition-all duration-700"
+                >
+                  {/* Video Thumbnail with subtle dark overlay */}
+                  <img
+                    src={video.thumb}
+                    alt={video.title}
+                    className="w-full h-full object-cover opacity-60 group-hover:opacity-40 group-hover:scale-110 transition-all duration-1000 ease-out"
+                    referrerPolicy="no-referrer"
+                  />
 
-                {/* Play Button Animation */}
-                <div className="absolute inset-0 flex items-center justify-center z-20">
-                  <div className="relative">
-                    <div className="absolute inset-0 bg-primary/40 rounded-full blur-2xl group-hover:blur-3xl transition-all duration-500 opacity-0 group-hover:opacity-100 scale-150" />
-                    <div className="w-20 h-20 md:w-28 md:h-28 bg-primary/10 backdrop-blur-md border border-primary/30 rounded-full flex items-center justify-center group-hover:scale-110 group-hover:bg-primary/20 transition-all duration-500 relative z-10">
-                      <Play
-                        className="text-primary fill-primary ml-1 group-hover:scale-110 transition-transform"
-                        size={32}
-                      />
+                  {/* Play Button Animation */}
+                  <div className="absolute inset-0 flex items-center justify-center z-20">
+                    <div className="relative">
+                      <div className="absolute inset-0 bg-primary/40 rounded-full blur-2xl group-hover:blur-3xl transition-all duration-500 opacity-0 group-hover:opacity-100 scale-150" />
+                      <div className="w-20 h-20 md:w-28 md:h-28 bg-primary/10 backdrop-blur-md border border-primary/30 rounded-full flex items-center justify-center group-hover:scale-110 group-hover:bg-primary/20 transition-all duration-500 relative z-10">
+                        <Play
+                          className="text-primary fill-primary ml-1 group-hover:scale-110 transition-transform"
+                          size={32}
+                        />
+                      </div>
+                      {/* Pulse Effect */}
+                      <div className="absolute inset-0 border-2 border-primary/50 rounded-full animate-ping opacity-0 group-hover:opacity-20" />
                     </div>
-                    {/* Pulse Effect */}
-                    <div className="absolute inset-0 border-2 border-primary/50 rounded-full animate-ping opacity-0 group-hover:opacity-20" />
                   </div>
-                </div>
 
-                {/* Video Info Overlay */}
-                <div className="absolute bottom-0 left-0 right-0 p-8 md:p-12 bg-gradient-to-t from-black via-black/80 to-transparent z-30">
-                  <h4 className="text-2xl md:text-4xl font-brutal uppercase tracking-tighter mb-2 group-hover:text-primary transition-colors duration-500">
-                    {video.title}
-                  </h4>
-                  <div className="flex items-center gap-3">
-                    <Film size={14} className="text-primary" />
-                    <span className="text-xs font-black uppercase tracking-[0.2em] text-primary">
-                      {video.duration}
-                    </span>
+                  {/* Video Info Overlay */}
+                  <div className="absolute bottom-0 left-0 right-0 p-8 md:p-12 bg-gradient-to-t from-black via-black/80 to-transparent z-30">
+                    <h4 className="text-2xl md:text-4xl font-brutal uppercase tracking-tighter mb-2 group-hover:text-primary transition-colors duration-500">
+                      {video.title}
+                    </h4>
+                    <div className="flex items-center gap-3">
+                      <Film size={14} className="text-primary" />
+                      <span className="text-xs font-black uppercase tracking-[0.2em] text-primary">
+                        {video.duration}
+                      </span>
+                    </div>
                   </div>
-                </div>
-              </motion.div>
-            ))}
+                </motion.div>
+              ),
+            )}
           </div>
 
           {videoHighlights.length === 0 && (
@@ -251,7 +253,9 @@ export default function Gallery() {
           </div>
 
           {behindTheScenes.length === 0 && (
-            <p className="text-center text-slate-500 mt-10">No behind-the-scenes media available yet.</p>
+            <p className="text-center text-slate-500 mt-10">
+              No behind-the-scenes media available yet.
+            </p>
           )}
         </section>
 

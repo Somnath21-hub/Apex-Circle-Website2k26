@@ -144,7 +144,6 @@ export default function About() {
           trigger: '.Box',
           start: 'top 85%',
           end: 'bottom 60%',
-          markers: true,
         },
         y: 80,
         opacity: 0,
@@ -161,7 +160,7 @@ export default function About() {
           scrub: true,
           toggleActions: 'play reverse play reverse',
         },
-        
+
         x: -60,
         stagger: 1,
         opacity: 0,
@@ -176,28 +175,67 @@ export default function About() {
         start: 'top bottom',
         end: 'bottom top',
         scrub: true,
-      
       },
 
-      
-     pin: true, 
-   
+      pin: true,
+
       y: (i) => (i % 2 === 0 ? -50 : 50),
       ease: 'none',
     });
 
-    gsap.to('.parallax-img', {
-      scrollTrigger: {
-        trigger: '.Image_Top-Container',
-        start: 'top bottom',
-        end: 'bottom top',
-        scrub: true,
-      
-      },
-      scale: 1.1,
-      ease: 'none',
+    // gsap.to('.parallax-img', {
+    //   scrollTrigger: {
+    //     trigger: '.Image_Top-Container',
+    //     start: 'top bottom',
+    //     end: 'bottom top',
+    //     scrub: true,
+    //   },
+    //   scale: 1.1,
+    //   ease: 'none',
+    // });
+
+    // Section animation (clean + subtle)
+    gsap.set('.Our_Partners', {
+      opacity: 0,
+      y: 40,
+      filter: 'blur(10px)',
     });
 
+    gsap.to('.Our_Partners', {
+      scrollTrigger: {
+        trigger: '.Our_Partners',
+        start: 'top 80%',
+        end: 'top 40%',
+        toggleActions: 'play none none reverse',
+        // markers: true,
+      },
+      opacity: 1,
+      backgroundColor: 'black',
+      y: 0,
+      filter: 'blur(0px)',
+      duration: 1,
+      ease: 'power3.out',
+    });
+
+    // Logos animation (main focus)
+    gsap.to('.partner-logo', {
+      scrollTrigger: {
+        trigger: '.Our_Partners',
+        start: 'top 80%',
+        end: 'top 40%',
+        toggleActions: 'play none none reverse',
+        // markers: true,
+      },
+      opacity: 1,
+      y: 40,
+      scale: 0.95,
+      duration: 0.8,
+      stagger: {
+        each: 0.08,
+        from: 'center', // 🔥 premium feel
+      },
+      ease: 'power3.out',
+    });
     return () => ctx.revert();
   }, []);
 
@@ -395,77 +433,51 @@ export default function About() {
             ))}
           </div>
         </div>
-
-        {/* Impact Section */}
-        <section className="mb-16 md:mb-32 py-16 md:py-24 border-y border-white/10 bg-gradient-to-b from-black/35 to-black/20 rounded-3xl">
-          <div className="grid grid-cols-2 md:grid-cols-4 gap-6 md:gap-10 px-4 md:px-8">
-            {stats.map((stat, i) => {
-              const Icon = stat.icon;
-              return (
-                <div
-                  key={i}
-                  className="stat-card group relative flex flex-col items-center justify-center p-6 md:p-8 rounded-2xl border border-white/10 bg-white/5 backdrop-blur-md transition-all duration-300 hover:-translate-y-2 hover:shadow-[0_0_30px_rgba(255,140,0,0.15)]"
-                >
-                  {/* Icon */}
-                  <div className="mb-4 text-primary group-hover:scale-110 transition-transform duration-300">
-                    <Icon size={28} />
-                  </div>
-
-                  {/* Value */}
-                  <div className="text-3xl sm:text-4xl md:text-6xl font-brutal tracking-tight mb-2 group-hover:text-primary transition-colors">
-                    {stat.value}
-                  </div>
-
-                  {/* Label */}
-                  <div className="text-xs font-semibold uppercase tracking-widest text-slate-400">
-                    {stat.label}
-                  </div>
-
-                  {/* Glow Effect */}
-                  <div className="absolute inset-0 rounded-2xl opacity-0 group-hover:opacity-100 transition duration-300 bg-gradient-to-r from-orange-500/10 via-transparent to-yellow-500/10 blur-xl" />
-                </div>
-              );
-            })}
-          </div>
-        </section>
-
         {/* Partners Section */}
-        <section className="mb-16 md:mb-32">
-          <div className="text-center mb-16 md:mb-24">
-            <h2 className="relative text-5xl md:text-8xl font-poppins font-black tracking-tight leading-[0.9] uppercase overflow-hidden pb-4 inline-block my-[8vh]">
-              <span className="text-white">Our</span> <br />
-              <span className="text-transparent bg-clip-text bg-gradient-to-r from-yellow-300 via-yellow-400 to-yellow-600 drop-shadow-[0_0_15px_rgba(250,204,21,0.5)]">
+        <section className="Our_Partners relative px-[4vw] py-24 md:py-32 flex flex-col items-center justify-center gap-16 overflow-hidden rounded-2xl ">
+          {/* Background Glow */}
+          <div className="absolute inset-0 -z-10 bg-[radial-gradient(circle_at_center,rgba(250,204,21,0.08),transparent_70%)]" />
+
+          {/* Heading */}
+          <div className="text-center max-w-3xl">
+            <h2 className="relative text-4xl sm:text-6xl md:text-8xl font-poppins font-black tracking-tight leading-[0.95] uppercase overflow-hidden inline-block">
+              <span className="block text-white">Our</span>
+
+              <span className="block text-transparent bg-clip-text bg-gradient-to-r from-yellow-300 via-yellow-400 to-yellow-600 drop-shadow-[0_0_20px_rgba(250,204,21,0.4)]">
                 Partners
               </span>
-              <div
-                className="absolute inset-0 pointer-events-none"
-                style={{
-                  background:
-                    'linear-gradient(90deg, transparent 20%, rgba(255,255,255,0.3) 50%, transparent 80%)',
-                  backgroundSize: '250% 100%',
-                  animation: 'glossySweep 3s ease-in-out infinite',
-                }}
-              />
+
+              {/* Glossy Sweep Effect */}
+              <span className="absolute inset-0 pointer-events-none bg-[linear-gradient(90deg,transparent_20%,rgba(255,255,255,0.25)_50%,transparent_80%)] bg-[length:200%_100%] animate-[glossySweep_3s_linear_infinite]" />
             </h2>
+
+            <p className="mt-6 text-slate-400 text-sm md:text-base leading-relaxed">
+              Trusted by innovative companies and industry leaders worldwide.
+            </p>
           </div>
 
-          <div className="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-6 gap-4 md:gap-8">
+          {/* Partners Grid */}
+          <div className="w-full max-w-7xl mb-[4vh] px-4 grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-6 gap-6 md:gap-8">
             {partners.map((partner, i) => (
               <div
                 key={i}
-                className="partner-logo group h-16 border border-white/10 flex items-center justify-center bg-blue-900/10 hover:bg-white/[0.15] transition-all duration-500 rounded-lg"
+                className="partner-logo  opacity-0 group relative flex items-center justify-center h-20 md:h-24 rounded-2xl border border-white/10 bg-white/[0.04] backdrop-blur-md overflow-hidden transition-all duration-500 hover:scale-[1.05] hover:border-yellow-400/40 hover:shadow-[0_10px_40px_rgba(250,204,21,0.15)]"
               >
+                {/* Glow on Hover */}
+                <div className="absolute inset-0 opacity-0 group-hover:opacity-100 transition duration-500 bg-[radial-gradient(circle,rgba(250,204,21,0.15),transparent_70%)]" />
+
+                {/* Logo */}
                 <img
                   src={partner.logo}
                   alt={partner.name}
-                  className="h-8 md:h-10  object-contain opacity-70 group-hover:opacity-100 transition-all duration-500 grayscale group-hover:grayscale-0"
+                  className="relative h-10 md:h-12 object-contain opacity-60 grayscale group-hover:opacity-100 group-hover:grayscale-0 transition-all duration-500"
                 />
               </div>
             ))}
           </div>
         </section>
 
-        <div className="cta bg-primary text-black p-8 md:p-24 flex flex-col md:flex-row justify-between items-center gap-8 md:gap-12">
+        <div className="cta bg-primary text-black p-8 md:p-24 flex flex-col md:flex-row justify-between items-center gap-8 md:gap-12 mt-[7vh]">
           <h2 className="text-4xl md:text-7xl font-brutal tracking-tighter uppercase leading-none text-center md:text-left">
             Ready to <br /> <span className="text-black/50">Contribute?</span>
           </h2>
