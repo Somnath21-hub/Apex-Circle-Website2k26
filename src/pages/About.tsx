@@ -1,4 +1,4 @@
-import { useRef } from 'react';
+import { useEffect, useRef } from 'react';
 import { motion } from 'motion/react';
 import { Target, Eye, Heart, ArrowRight } from 'lucide-react';
 import { Users, Rocket, Trophy, Handshake } from 'lucide-react';
@@ -110,6 +110,29 @@ const Journey_Image = [
   },
 ];
 
+const timelineSteps = [
+  {
+    year: '2021',
+    title: 'The Foundation',
+    desc: 'Founded by a group of developers looking for a better way to collaborate.',
+  },
+  {
+    year: '2022',
+    title: 'Global Scale',
+    desc: 'Reached 1,000 members and hosted our first international hackathon.',
+  },
+  {
+    year: '2023',
+    title: 'Incubator Launch',
+    desc: 'Launched our incubator program and open-source project archives.',
+  },
+  {
+    year: '2024',
+    title: 'Future Protocol',
+    desc: 'Pioneering the future of decentralized community building.',
+  },
+];
+
 const stats = [
   { label: 'Community', value: '10K+', icon: Users },
   { label: 'Projects', value: '500+', icon: Rocket },
@@ -119,6 +142,57 @@ const stats = [
 
 export default function About() {
   const container = useRef<HTMLDivElement>(null);
+
+  const rightPanelRef = useRef<HTMLDivElement>(null);
+
+  useGSAP(() => {
+    const panel = rightPanelRef.current;
+    if (!panel) return;
+
+    const cards = panel.querySelectorAll<HTMLElement>('.reveal-card');
+
+    gsap.set(cards, { opacity: 0, y: 50, x: 100, filter: 'blur(20px)' });
+
+    const triggers: ScrollTrigger[] = [];
+
+    cards.forEach((card) => {
+      const st = gsap.to(card, {
+        opacity: 1,
+        y: 0,
+        x: 0,
+        filter: 'blur(0px)',
+        duration: 0.7,
+        ease: 'power3.out',
+        scrollTrigger: {
+          trigger: card,
+          // NO scroller — let it watch window scroll
+          start: 'top 80%',
+          end: 'top 80%',
+          toggleActions: 'play none none reverse',
+        },
+      });
+      triggers.push(st.scrollTrigger!);
+    });
+
+    return () => {
+      triggers.forEach((t) => t.kill());
+    };
+  }, []);
+
+  // useGSAP(()=>{
+  //   gsap.to(".right",{
+  //     yPercent : -100,
+  //     scrollTrigger: {
+  //       trigger : ".papa",
+  //       start : "top top",
+  //       end : "bottom bottom",
+  //       scrub : true,
+  //       markers : true,
+  //       pin : true,
+  //       pinSpacing : false,
+  //     }
+  //   })
+  // })
 
   useGSAP(() => {
     const ctx = gsap.context(() => {
@@ -239,6 +313,22 @@ export default function About() {
     return () => ctx.revert();
   }, []);
 
+  const leftPanelRef = useRef<HTMLDivElement>(null);
+  useGSAP(() => {
+    if (leftPanelRef.current) {
+      gsap.to(leftPanelRef.current, {
+        scrollTrigger: {
+          trigger: leftPanelRef.current,
+          pin: true,
+          start: 'top 15%',
+          end: 'bottom bottom',
+          scrub: true,
+          // markers: true,
+        },
+      });
+    }
+  }, []);
+
   return (
     <div
       className="About sec pt-24 md:pt-32 pb-16 md:pb-20 px-6 bg-background overflow-hidden relative"
@@ -336,103 +426,86 @@ export default function About() {
           ))}
         </div>
 
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 md:gap-32 items-center mb-16 md:mb-24">
-          <div className="">
-            <h2 className="relative text-5xl md:text-8xl font-poppins font-black tracking-tight leading-[0.9] uppercase overflow-hidden pb-4 inline-block my-[8vh]">
-              <span className="text-white">Our</span> <br />
-              <span className="text-transparent bg-clip-text bg-gradient-to-r from-yellow-300 via-yellow-400 to-yellow-600 drop-shadow-[0_0_15px_rgba(250,204,21,0.5)]">
-                Journey
-              </span>
-              <div
-                className="absolute inset-0 pointer-events-none"
-                style={{
-                  background:
-                    'linear-gradient(90deg, transparent 20%, rgba(255,255,255,0.3) 50%, transparent 80%)',
-                  backgroundSize: '250% 100%',
-                  animation: 'glossySweep 3s ease-in-out infinite',
-                }}
-              />
-            </h2>
-
-            <div className="timeline space-y-10 md:space-y-16">
-              {[
-                {
-                  year: '2021',
-                  title: 'The Foundation',
-                  desc: 'Founded by a group of developers looking for a better way to collaborate.',
-                },
-                {
-                  year: '2022',
-                  title: 'Global Scale',
-                  desc: 'Reached 1,000 members and hosted our first international hackathon.',
-                },
-                {
-                  year: '2023',
-                  title: 'Incubator Launch',
-                  desc: 'Launched our incubator program and open-source project archives.',
-                },
-                {
-                  year: '2024',
-                  title: 'Future Protocol',
-                  desc: 'Pioneering the future of decentralized community building.',
-                },
-              ].map((step, i) => (
-                <div key={i} className="timeline-item flex gap-8 md:gap-12 group relative">
-                  <div className="absolute left-[-20px] top-0 h-full w-[1px] bg-white/10 group-hover:bg-primary transition-colors" />
-                  <span className="text-primary font-mono text-xl md:text-2xl pt-1">
-                    [{step.year}]
-                  </span>
-                  <div>
-                    <h4 className="text-2xl md:text-3xl font-brutal tracking-tight uppercase mb-3 group-hover:text-primary transition-colors">
-                      {step.title}
-                    </h4>
-                    <p className="text-slate-500 text-lg md:text-xl leading-relaxed max-w-lg">
-                      {step.desc}
-                    </p>
+        <div className="flex gap-16 py-40  h-[370vh] min-h-screen relative">
+          {/* LEFT */}
+          <div ref={leftPanelRef} className="w-1/2 flex-shrink-0">
+            <div className="flex flex-col justify-center rounded-2xl p-8 md:p-12">
+              <h2 className="relative text-5xl md:text-8xl font-poppins font-black tracking-tight leading-[0.9] uppercase pb-4 inline-block mb-[4vh]">
+                <span className="text-white">Our</span>
+                <br />
+                <span className="text-transparent bg-clip-text bg-gradient-to-r from-yellow-300 via-yellow-400 to-yellow-600">
+                  Journey
+                </span>
+              </h2>
+              <div className="timeline space-y-10">
+                {[
+                  {
+                    year: '2021',
+                    title: 'The Foundation',
+                    desc: 'Founded by a group of developers looking for a better way to collaborate.',
+                  },
+                  {
+                    year: '2022',
+                    title: 'Global Scale',
+                    desc: 'Reached 1,000 members and hosted our first international hackathon.',
+                  },
+                  {
+                    year: '2023',
+                    title: 'Incubator Launch',
+                    desc: 'Launched our incubator program and open-source project archives.',
+                  },
+                  {
+                    year: '2024',
+                    title: 'Future Protocol',
+                    desc: 'Pioneering the future of decentralized community building.',
+                  },
+                ].map((step, i) => (
+                  <div key={i} className="timeline-item flex gap-8 group relative">
+                    <div className="absolute left-[-20px] top-0 h-full w-[1px] bg-white/10 group-hover:bg-primary transition-colors" />
+                    <span className="text-primary font-mono text-xl pt-1">[{step.year}]</span>
+                    <div>
+                      <h4 className="text-2xl font-brutal tracking-tight uppercase mb-2 group-hover:text-primary transition-colors">
+                        {step.title}
+                      </h4>
+                      <p className="text-slate-500 text-lg leading-relaxed max-w-lg">{step.desc}</p>
+                    </div>
                   </div>
-                </div>
-              ))}
+                ))}
+              </div>
             </div>
           </div>
 
-          {/* CALCUTTA HACKS SQUARE PHOTO — LIFTED TOP */}
-          <div className="Image_Top-Container relative group w-full flex flex-col items-center justify-start gap-[12vh] py-[10vh] md:mt-[-48px]  overflow-hidden">
+          {/* Right */}
+          <div ref={rightPanelRef} className="w-1/2 flex flex-col gap-10 py-10">
             {Journey_Image.map((item, i) => (
               <div
                 key={i}
                 className={`
-        Image_Hold_Container h-[400px] relative w-full 
-        ${i % 2 === 0 ? 'max-w-2xl' : 'max-w-xl'} 
-        aspect-[4/5] rounded-3xl overflow-hidden
-        border border-white/10 bg-black/40 
-        shadow-[0_20px_100px_rgba(0,0,0,0.7)]
-        transition-all duration-700 ease-out
-        group hover:scale-[1.02] hover:-translate-y-3 hover:border-primary/40
-      `}
+                  reveal-card relative flex-shrink-0
+                  ${i % 2 === 0 ? 'h-[420px]' : 'h-[360px]'}
+                  w-full rounded-3xl overflow-hidden
+                  border border-white/10 bg-black/40
+                  shadow-[0_20px_100px_rgba(0,0,0,0.7)]
+                  transition-all duration-700 ease-out
+                  group hover:scale-[1.02] hover:-translate-y-3 hover:border-primary/40
+                `}
               >
-                {/* IMAGE */}
                 <img
                   src={item.image}
                   alt={item.name}
-                  className="parallax-img w-full h-full object-cover object-center transition-transform duration-[1200ms] ease-out group-hover:scale-110"
+                  className="w-full h-full object-cover object-center transition-transform duration-[1200ms] ease-out group-hover:scale-110"
                 />
-
-                {/* DARK GRADIENT OVERLAY */}
                 <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-black/20 to-transparent opacity-80 group-hover:opacity-100 transition-opacity duration-700" />
-
-                {/* TEXT CONTENT (NEW 🔥) */}
                 <div className="absolute bottom-0 left-0 p-6 md:p-8 z-10">
                   <h3 className="text-xl md:text-2xl font-semibold text-white tracking-tight">
                     {item.name}
                   </h3>
                 </div>
-
-                {/* SOFT GLOW */}
-                <div className="absolute inset-0 rounded-3xl pointer-events-none opacity-0 group-hover:opacity-100 transition duration-700 bg-[radial-gradient(circle_at_center,rgba(255,255,255,0.08),transparent_70%)]" />
               </div>
             ))}
           </div>
         </div>
+
         {/* Partners Section */}
         <section className="Our_Partners relative px-[4vw] py-24 md:py-32 flex flex-col items-center justify-center gap-16 overflow-hidden rounded-2xl ">
           {/* Background Glow */}
@@ -487,5 +560,27 @@ export default function About() {
         </div>
       </div>
     </div>
+    // <>
+    //   <div className="w-full h-screen flex items-center justify-center text-6xl">Scroll Down</div>
+
+    //   <div className="flex justify-center w-full h-[200vh] pt-40">
+
+    //     <div className="w-1/2 text-5xl h-[85vh] flex-shrink-0 sticky top-40  z-10 flex items-center justify-center">
+    //       <h1>Sticky Left</h1>
+    //     </div>
+
+    //     <div
+    //       ref={rightPanelRef}
+    //       className="w-1/2 h-full overflow-y-auto  flex flex-col juscify-center gap-10 pt-10 pb-10 px-10"
+    //     >
+    //       <div className="reveal-card w-full h-80 bg-red-200 rounded-md"></div>
+    //       <div className="reveal-card w-full h-80 bg-red-200 rounded-md"></div>
+    //       <div className="reveal-card w-full h-80 bg-red-200 rounded-md"></div>
+    //       <div className="reveal-card w-full h-80 bg-red-200 rounded-md"></div>
+    //     </div>
+    //   </div>
+
+    //   <div className="w-full h-screen flex items-center justify-center text-6xl">Scroll Up</div>
+    // </>
   );
 }
