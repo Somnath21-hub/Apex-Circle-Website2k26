@@ -98,8 +98,6 @@ const Journey_Image = [
   },
 ];
 
-
-
 const stats = [
   { label: 'Community', value: '10K+', icon: Users },
   { label: 'Projects', value: '500+', icon: Rocket },

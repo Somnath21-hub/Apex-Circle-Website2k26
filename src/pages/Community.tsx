@@ -20,7 +20,7 @@ import Magnetic from '@/components/ui/Magnetic';
 
 gsap.registerPlugin(ScrollTrigger);
 
-useGSAP(() => {}, []);
+// useGSAP(() => {}, []);
 
 const paths = [
   {
