@@ -48,16 +48,40 @@ export default function Community() {
 
   useGSAP(
     () => {
-      gsap.from('.reveal-item', {
+      gsap.to('.Role-Card', {
+        y: -50,
+        opacity: 1,
+        duration: 0.8,
+      });
+
+      gsap.to('.SideImage', {
         scrollTrigger: {
-          trigger: '.reveal-item',
-          start: 'top 85%',
+          trigger: '.SideImage',
+          start: 'top 60%',
+          end: 'bottom 20%',
+          toggleActions: 'play reverse play reverse',
         },
-        y: 50,
-        opacity: 0,
-        duration: 1,
-        stagger: 0.2,
-        ease: 'power4.out',
+        x: -30,
+        transition: 'transform 0.8s ease-out',
+        stagger: 0.8,
+        opacity: 1,
+        duration: 0.5,
+      });
+
+      gsap.to('.why-list', {
+        scrollTrigger: {
+          trigger: '.why-list',
+          start: 'top 70%',
+          end: 'bottom 20%',
+          toggleActions: 'play reverse play reverse',
+          markers: true,
+        },
+        x: 20,
+        pin: true,
+        stagger: 0.3,
+        opacity: 1,
+        duration: 1.2,
+        ease: 'power2.out',
       });
     },
     { scope: containerRef },
@@ -66,30 +90,50 @@ export default function Community() {
   return (
     <div ref={containerRef} className="pt-32 md:pt-48 pb-24 md:pb-32 px-6">
       {/* Hero Section */}
-      <section className="mb-24 md:mb-48">
-        <div className="max-w-7xl mx-auto text-center">
-          <span className="text-primary font-mono text-sm mb-8 block tracking-widest uppercase">
-            // Join_The_Circle
-          </span>
-          <h1 className="text-5xl relative sm:text-7xl md:text-[10rem] lg:text-[12rem] font-brutal tracking-tighter leading-[0.8] uppercase mb-8 md:mb-12">
-            The <br /> <span className="text-primary">Community</span>
-            <div
+
+      <header className="mb-16 sm:mb-20 md:mb-28 lg:mb-36 px-[15vw]">
+        <motion.div
+          initial={{ opacity: 0, y: 30 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.9, ease: 'easeOut' }}
+          className="max-w-6xl"
+        >
+          <h1 className="text-[12vw] sm:text-5xl md:text-7xl lg:text-[8rem] xl:text-[9rem] font-poppins font-black tracking-tighter leading-[0.9] uppercase mb-6 sm:mb-10 relative">
+            {/* LINE 1 */}
+            <span className="block text-white drop-shadow-[0_0_25px_rgba(255,255,255,0.4)]">
+              Our
+            </span>
+
+            {/* LINE 2 */}
+            <span className="block text-yellow-400 drop-shadow-[0_0_25px_rgba(250,204,21,0.6)]">
+              Community
+            </span>
+
+            {/* LINE 3 */}
+            <span className="block text-tertiary drop-shadow-[0_0_25px_rgba(56,189,248,0.6)]">
+              Apex Circle
+            </span>
+
+            {/* Gloss Effect */}
+            <span
               className="absolute inset-0 pointer-events-none"
               style={{
                 background:
-                  'linear-gradient(90deg, transparent 20%, rgba(255,255,255,0.3) 50%, transparent 80%)',
-                backgroundSize: '250% 100%',
-                animation: 'glossySweep 3s ease-in-out infinite',
+                  'linear-gradient(90deg, transparent 20%, rgba(255,255,255,0.15) 50%, transparent 80%)',
+                backgroundSize: '200% 100%',
+                animation: 'glossySweep 5s ease-in-out infinite',
               }}
             />
           </h1>
-          <p className="text-lg md:text-2xl text-slate-400 max-w-3xl mx-auto font-medium leading-relaxed">
-            Apex Circle is a decentralized collective of architects, engineers, and visionaries. Our
-            mission is to empower individuals to build real-world solutions and grow through a
-            strong and supportive tech community.
+
+          {/* DESCRIPTION */}
+          <p className="text-slate-400 text-base sm:text-lg md:text-xl max-w-2xl font-medium leading-relaxed tracking-tight">
+            Apex Circle is a growing community of developers who learn, build, and grow together.
+            It’s a space where people connect, share ideas, collaborate on projects, and support
+            each other in becoming better every day.
           </p>
-        </div>
-      </section>
+        </motion.div>
+      </header>
 
       {/* Paths Section */}
       <section className="mb-24 md:mb-48">
@@ -98,7 +142,7 @@ export default function Community() {
             {paths.map((path, i) => (
               <div
                 key={i}
-                className="group p-8 md:p-6 border border-white/10 bg-[#060c37] hover:border-yellow-500 transition-all duration-500"
+                className="Role-Card opacity-0 transform-3d ease-in-out group p-8 md:p-6 border border-white/10 bg-[#060c37] hover:border-yellow-500 transition-all duration-500"
               >
                 <path.icon
                   className="text-primary mb-6 md:mb-8 group-hover:scale-110 transition-transform"
@@ -152,7 +196,7 @@ export default function Community() {
               ].map((benefit, i) => (
                 <div
                   key={i}
-                  className="group relative flex items-start gap-4 p-3 rounded-lg overflow-hidden transition-all duration-300 hover:bg-white/5"
+                  className="why-list group relative flex items-start gap-4 p-3 rounded-lg overflow-hidden transition-all duration-300 hover:bg-white/5"
                 >
                   <span className="absolute left-0 top-0 h-full w-[2px] bg-primary scale-y-0 origin-top transition-transform duration-300 group-hover:scale-y-100"></span>
 
@@ -168,7 +212,7 @@ export default function Community() {
               ))}
             </div>
           </div>
-          <div className="relative aspect-square overflow-hidden border border-white/10 mt-[8vh]">
+          <div className="SideImage opacity-0 ml-[2.8vw] relative aspect-square overflow-hidden border border-white/10 mt-[8vh]">
             <img
               src="https://res.cloudinary.com/dszlrclik/image/upload/v1776154399/Screenshot_at_2026-04-14_13-42-44_ijsxxu.png"
               alt="Community"
