@@ -1,6 +1,7 @@
 import { useRef } from 'react';
 import { motion } from 'motion/react';
 import { useGSAP } from '@gsap/react';
+import { FaArrowRight } from 'react-icons/fa';
 import gsap from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
 import {
@@ -18,6 +19,15 @@ import {
 import Magnetic from '@/components/ui/Magnetic';
 
 gsap.registerPlugin(ScrollTrigger);
+
+
+
+
+
+useGSAP(() => {
+  
+}, []);
+
 
 const paths = [
   {
@@ -101,6 +111,7 @@ export default function Community() {
                   className="text-primary mb-6 md:mb-8 group-hover:scale-110 transition-transform"
                   size={28}
                 />
+
                 <h3 className="text-3xl md:text-4xl font-brutal uppercase tracking-tighter mb-4">
                   {path.title}
                 </h3>
@@ -138,7 +149,7 @@ export default function Community() {
               />
             </h2>
 
-            <div className="space-y-6 md:space-y-4">
+            <div className="space-y-6 md:space-y-3">
               {[
                 'Learn and grow with a strong community',
                 'Build real projects, not just practice',
@@ -152,7 +163,7 @@ export default function Community() {
                 >
                   <span className="absolute left-0 top-0 h-full w-[2px] bg-primary scale-y-0 origin-top transition-transform duration-300 group-hover:scale-y-100"></span>
 
-                  <CheckCircle2
+                  <FaArrowRight
                     size={18}
                     className="text-primary shrink-0 mt-1 transition-transform duration-300 group-hover:scale-110"
                   />
@@ -164,11 +175,11 @@ export default function Community() {
               ))}
             </div>
           </div>
-          <div className="relative aspect-square overflow-hidden border border-white/10">
+          <div className="relative aspect-square overflow-hidden border border-white/10 mt-[8vh]">
             <img
-              src="https://feweek.co.uk/wp-content/uploads/2021/11/community-fe-feat.jpg"
+              src="https://res.cloudinary.com/dszlrclik/image/upload/v1776154399/Screenshot_at_2026-04-14_13-42-44_ijsxxu.png"
               alt="Community"
-              className="w-full h-full object-cover rounded-lg shadow shadow-2xl shadow-amber-500/20"
+              className="w-full h-full object-cover rounded-lg  shadow shadow-2xl shadow-amber-500/20 "
               referrerPolicy="no-referrer"
             />
             <div className="absolute inset-0 bg-primary/10 mix-blend-overlay" />

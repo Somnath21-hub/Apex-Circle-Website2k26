@@ -62,27 +62,15 @@ const partners = [
 
 const Journey_Image = [
   {
-    name: 'Calcutta Hacks',
+    name: 'Community Foundation',
     image:
-      'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQnGtdtibstB6p2O5DLSwm_nxYJfr1SEIVP8A&s',
+      'https://cdn.sanity.io/images/r9a0cpxc/production/5f839f1c85ca2cc051349d2dd74aa6221d6c60e6-1050x591.jpg',
   },
 
   {
-    name: 'Calcutta Hacks',
+    name: 'Community Growth',
     image:
-      'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQnGtdtibstB6p2O5DLSwm_nxYJfr1SEIVP8A&s',
-  },
-
-  {
-    name: 'Calcutta Hacks',
-    image:
-      'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQnGtdtibstB6p2O5DLSwm_nxYJfr1SEIVP8A&s',
-  },
-
-  {
-    name: 'Calcutta Hacks',
-    image:
-      'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQnGtdtibstB6p2O5DLSwm_nxYJfr1SEIVP8A&s',
+      'https://img.freepik.com/premium-photo/colorful-equal-rights-symbols-concept_926199-2156006.jpg',
   },
 
   {
@@ -179,21 +167,6 @@ export default function About() {
     };
   }, []);
 
-  // useGSAP(()=>{
-  //   gsap.to(".right",{
-  //     yPercent : -100,
-  //     scrollTrigger: {
-  //       trigger : ".papa",
-  //       start : "top top",
-  //       end : "bottom bottom",
-  //       scrub : true,
-  //       markers : true,
-  //       pin : true,
-  //       pinSpacing : false,
-  //     }
-  //   })
-  // })
-
   useGSAP(() => {
     const ctx = gsap.context(() => {
       // ================= HERO =================
@@ -227,28 +200,42 @@ export default function About() {
       });
 
       // ================= JOURNEY TIMELINE =================
+
+
+      
+
+      
       gsap.from('.timeline-item', {
         scrollTrigger: {
           trigger: '.timeline',
-          start: 'top 90%',
+          start: 'top 70%',
+          end: 'bottom 0%',
           scrub: true,
           toggleActions: 'play reverse play reverse',
+          markers: true,
         },
-
+         
         x: -60,
-        stagger: 1,
+        stagger: 0.8,
+        
         opacity: 0,
         duration: 1,
         ease: 'power3.inOut',
       });
     }, container);
 
+
+    
+
+    
+
     gsap.to('.Image_Top-Container', {
       scrollTrigger: {
         trigger: '.Image_Top-Container',
-        start: 'top bottom',
-        end: 'bottom top',
+        start: 'top 20%',
+        end: 'bottom 0%',
         scrub: true,
+        // markers: true,
       },
 
       pin: true,
@@ -257,18 +244,6 @@ export default function About() {
       ease: 'none',
     });
 
-    // gsap.to('.parallax-img', {
-    //   scrollTrigger: {
-    //     trigger: '.Image_Top-Container',
-    //     start: 'top bottom',
-    //     end: 'bottom top',
-    //     scrub: true,
-    //   },
-    //   scale: 1.1,
-    //   ease: 'none',
-    // });
-
-    // Section animation (clean + subtle)
     gsap.set('.Our_Partners', {
       opacity: 0,
       y: 40,
@@ -440,34 +415,60 @@ export default function About() {
               <div className="timeline space-y-10">
                 {[
                   {
-                    year: '2021',
-                    title: 'The Foundation',
-                    desc: 'Founded by a group of developers looking for a better way to collaborate.',
+                    time: 'Start',
+                    progress: '0%',
+                    title: 'The Idea',
+                    desc: 'Apex Circle began with a clear vision — to create a space where developers can learn, connect, and grow together. It started as a small initiative driven by passion and curiosity.',
                   },
                   {
-                    year: '2022',
-                    title: 'Global Scale',
-                    desc: 'Reached 1,000 members and hosted our first international hackathon.',
+                    time: 'Phase 1',
+                    progress: '25%',
+                    title: 'Building the Foundation',
+                    desc: 'We formed our early community, shared knowledge, and created a supportive environment where developers could improve their skills step by step.',
                   },
                   {
-                    year: '2023',
-                    title: 'Incubator Launch',
-                    desc: 'Launched our incubator program and open-source project archives.',
+                    time: 'Phase 2',
+                    progress: '50%',
+                    title: 'Rapid Growth',
+                    desc: 'The community expanded quickly. More developers joined, collaborations increased, and real-world projects started taking shape.',
                   },
                   {
-                    year: '2024',
-                    title: 'Future Protocol',
-                    desc: 'Pioneering the future of decentralized community building.',
+                    time: 'Phase 3',
+                    progress: '75%',
+                    title: 'Creating Impact',
+                    desc: 'We focused on building meaningful projects, contributing to open-source, and helping members turn ideas into real outcomes and opportunities.',
+                  },
+                  {
+                    time: 'Future',
+                    progress: '100%',
+                    title: 'Vision Ahead',
+                    desc: 'Apex Circle is moving forward with a strong vision — to empower developers globally, build innovative solutions, and create a future-ready tech community.',
                   },
                 ].map((step, i) => (
-                  <div key={i} className="timeline-item flex gap-8 group relative">
-                    <div className="absolute left-[-20px] top-0 h-full w-[1px] bg-white/10 group-hover:bg-primary transition-colors" />
-                    <span className="text-primary font-mono text-xl pt-1">[{step.year}]</span>
-                    <div>
-                      <h4 className="text-2xl font-brutal tracking-tight uppercase mb-2 group-hover:text-primary transition-colors">
+                  <div
+                    key={i}
+                    className="timeline-item group relative flex gap-6 md:gap-8 items-start"
+                  >
+                    {/* Vertical Line */}
+                    <div className="absolute left-[-18px] top-0 h-full w-[2px] bg-white/10 group-hover:bg-primary transition-all duration-300" />
+
+                    {/* Dot Indicator */}
+                    <div className="absolute left-[-24px] top-2 w-3 h-3 rounded-full bg-white/20 group-hover:bg-primary group-hover:scale-125 transition-all duration-300" />
+
+                    {/* Progress */}
+                    <span className="text-primary/80 group-hover:text-primary font-mono text-sm md:text-base pt-1 tracking-wider transition-all duration-300">
+                      {step.progress}
+                    </span>
+
+                    {/* Content */}
+                    <div className="space-y-2">
+                      <h4 className="text-xl md:text-2xl font-semibold tracking-tight uppercase text-white group-hover:text-primary transition-all duration-300">
                         {step.title}
                       </h4>
-                      <p className="text-slate-500 text-lg leading-relaxed max-w-lg">{step.desc}</p>
+
+                      <p className="text-slate-400 text-sm md:text-base leading-relaxed max-w-xl group-hover:text-slate-300 transition-all duration-300">
+                        {step.desc}
+                      </p>
                     </div>
                   </div>
                 ))}
@@ -507,7 +508,7 @@ export default function About() {
         </div>
 
         {/* Partners Section */}
-        <section className="Our_Partners relative px-[4vw] py-24 md:py-32 flex flex-col items-center justify-center gap-16 overflow-hidden rounded-2xl ">
+        <section className="Our_Partners mt-[18vh] relative px-[4vw] py-24 md:py-32 flex flex-col items-center justify-center gap-16 overflow-hidden rounded-2xl ">
           {/* Background Glow */}
           <div className="absolute inset-0 -z-10 bg-[radial-gradient(circle_at_center,rgba(250,204,21,0.08),transparent_70%)]" />
 
