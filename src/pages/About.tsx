@@ -98,28 +98,7 @@ const Journey_Image = [
   },
 ];
 
-const timelineSteps = [
-  {
-    year: '2021',
-    title: 'The Foundation',
-    desc: 'Founded by a group of developers looking for a better way to collaborate.',
-  },
-  {
-    year: '2022',
-    title: 'Global Scale',
-    desc: 'Reached 1,000 members and hosted our first international hackathon.',
-  },
-  {
-    year: '2023',
-    title: 'Incubator Launch',
-    desc: 'Launched our incubator program and open-source project archives.',
-  },
-  {
-    year: '2024',
-    title: 'Future Protocol',
-    desc: 'Pioneering the future of decentralized community building.',
-  },
-];
+
 
 const stats = [
   { label: 'Community', value: '10K+', icon: Users },
@@ -201,10 +180,6 @@ export default function About() {
 
       // ================= JOURNEY TIMELINE =================
 
-
-      
-
-      
       gsap.from('.timeline-item', {
         scrollTrigger: {
           trigger: '.timeline',
@@ -214,20 +189,15 @@ export default function About() {
           toggleActions: 'play reverse play reverse',
           markers: true,
         },
-         
+
         x: -60,
         stagger: 0.8,
-        
+
         opacity: 0,
         duration: 1,
         ease: 'power3.inOut',
       });
     }, container);
-
-
-    
-
-    
 
     gsap.to('.Image_Top-Container', {
       scrollTrigger: {
