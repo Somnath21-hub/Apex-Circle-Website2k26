@@ -284,7 +284,7 @@ export default function About() {
         // markers: true,
       },
       opacity: 1,
-      backgroundColor: 'black',
+      // backgroundColor: 'black',
       y: 0,
       filter: 'blur(0px)',
       duration: 1,
