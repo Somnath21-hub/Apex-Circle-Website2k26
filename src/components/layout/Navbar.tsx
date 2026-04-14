@@ -62,33 +62,32 @@ export default function Navbar() {
     };
   }, [isOpen]);
 
-
   let lastScroll = 0;
-  const header = document.querySelector("nav");
+  const header = document.querySelector('nav');
   let isAnimating = false;
 
-  window.addEventListener("scroll", () => {
+  window.addEventListener('scroll', () => {
     const currentScroll = window.pageYOffset;
 
     if (currentScroll > lastScroll && currentScroll > 10 && !isAnimating) {
       // Scroll Down - Hide
       isAnimating = true;
       gsap.to(header, {
-        y: "-100%",
-        willChange: "transform",
+        y: '-100%',
+        willChange: 'transform',
         onComplete: () => {
           isAnimating = false;
-        }
+        },
       });
     } else if (currentScroll < lastScroll && !isAnimating) {
       // Scroll Up - Show
       isAnimating = true;
       gsap.to(header, {
-        y: "0%",
-        willChange: "transform",
+        y: '0%',
+        willChange: 'transform',
         onComplete: () => {
           isAnimating = false;
-        }
+        },
       });
     }
 
@@ -105,8 +104,7 @@ export default function Navbar() {
       <div
         className={cn(
           'max-w-[98%] mx-auto flex items-center justify-between transition-all  duration-700 px-4 sm:px-5 py-3 md:py-5 rounded-2xl relative overflow-hidden z-9999',
-           'bg-black/60 backdrop-blur-3xl border border-white/[0.15] shadow-[0_0_30px_rgba(79,142,247,0.2)] before:absolute before:inset-x-0 before:bottom-0 before:h-[2px] before:bg-gradient-to-r before:from-transparent before:via-primary/70 before:to-transparent'
-           
+          'bg-black/60 backdrop-blur-3xl border border-white/[0.15] shadow-[0_0_30px_rgba(79,142,247,0.2)] before:absolute before:inset-x-0 before:bottom-0 before:h-[2px] before:bg-gradient-to-r before:from-transparent before:via-primary/70 before:to-transparent',
         )}
       >
         <div

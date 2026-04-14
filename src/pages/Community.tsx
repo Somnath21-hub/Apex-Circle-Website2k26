@@ -52,7 +52,7 @@ export default function Community() {
         y: -50,
         opacity: 1,
         duration: 0.8,
-        willChange: "transform , opacity",
+        willChange: 'transform , opacity',
       });
 
       gsap.to('.SideImage', {
@@ -64,7 +64,7 @@ export default function Community() {
         },
         x: -30,
         transition: 'transform 0.8s ease-out',
-        willChange: "transform , opacity , filter",
+        willChange: 'transform , opacity , filter',
         stagger: 0.8,
         opacity: 1,
         filter: 'blur(0px)',
@@ -77,13 +77,12 @@ export default function Community() {
           end: 'bottom 0%',
           toggleActions: 'play reverse play reverse',
           markers: true,
-        //  pin: true,
+          //  pin: true,
         },
         x: 20,
-        willChange: "transform , opacity",
+        willChange: 'transform , opacity',
         stagger: 0.3,
         opacity: 1,
-      
       });
     },
     { scope: containerRef },
