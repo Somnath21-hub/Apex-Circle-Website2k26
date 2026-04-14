@@ -16,6 +16,7 @@
   "dependencies": {
     "@google/genai": "^1.49.0",
     "@gsap/react": "^2.1.2",
+    "@studio-freight/lenis": "^1.0.42",
     "@tailwindcss/vite": "^4.2.2",
     "@vitejs/plugin-react": "^5.2.0",
     "clsx": "^2.1.1",

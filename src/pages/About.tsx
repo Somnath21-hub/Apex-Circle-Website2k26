@@ -263,7 +263,7 @@ export default function About() {
         scrollTrigger: {
           trigger: leftPanelRef.current,
           pin: true,
-          start: 'top 15%',
+          start: 'top 5%',
           end: 'bottom bottom',
           scrub: true,
           // markers: true,
@@ -418,7 +418,7 @@ export default function About() {
         <div className="flex gap-16 py-40  h-[370vh] min-h-screen relative">
           {/* LEFT */}
           <div ref={leftPanelRef} className="w-1/2 flex-shrink-0">
-            <div className="flex flex-col justify-center rounded-2xl p-8 md:p-12">
+            <div className="flex flex-col justify-center rounded-2xl">
               <h2 className="relative text-5xl md:text-8xl font-poppins font-black tracking-tight leading-[0.9] uppercase pb-4 inline-block mb-[4vh]">
                 <span className="text-white">Our</span>
                 <br />
@@ -426,7 +426,7 @@ export default function About() {
                   Journey
                 </span>
               </h2>
-              <div className="timeline space-y-10">
+              <div className="timeline space-y-6">
                 {[
                   {
                     time: 'Start',

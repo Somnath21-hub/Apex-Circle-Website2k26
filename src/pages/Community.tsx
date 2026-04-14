@@ -52,6 +52,7 @@ export default function Community() {
         y: -50,
         opacity: 1,
         duration: 0.8,
+        willChange: "transform , opacity",
       });
 
       gsap.to('.SideImage', {
@@ -63,25 +64,26 @@ export default function Community() {
         },
         x: -30,
         transition: 'transform 0.8s ease-out',
+        willChange: "transform , opacity , filter",
         stagger: 0.8,
         opacity: 1,
-        duration: 0.5,
+        filter: 'blur(0px)',
       });
 
       gsap.to('.why-list', {
         scrollTrigger: {
           trigger: '.why-list',
-          start: 'top 70%',
-          end: 'bottom 20%',
+          start: 'top 80%',
+          end: 'bottom 0%',
           toggleActions: 'play reverse play reverse',
           markers: true,
+        //  pin: true,
         },
         x: 20,
-        pin: true,
+        willChange: "transform , opacity",
         stagger: 0.3,
         opacity: 1,
-        duration: 1.2,
-        ease: 'power2.out',
+      
       });
     },
     { scope: containerRef },
@@ -196,7 +198,7 @@ export default function Community() {
               ].map((benefit, i) => (
                 <div
                   key={i}
-                  className="why-list group relative flex items-start gap-4 p-3 rounded-lg overflow-hidden transition-all duration-300 hover:bg-white/5"
+                  className="why-list group opacity-0 relative  -ml-4 flex items-start gap-4 p-3 rounded-lg overflow-hidden transition-all duration-300 hover:bg-white/5"
                 >
                   <span className="absolute left-0 top-0 h-full w-[2px] bg-primary scale-y-0 origin-top transition-transform duration-300 group-hover:scale-y-100"></span>
 
@@ -212,11 +214,11 @@ export default function Community() {
               ))}
             </div>
           </div>
-          <div className="SideImage opacity-0 ml-[2.8vw] relative aspect-square overflow-hidden border border-white/10 mt-[8vh]">
+          <div className="SideImage blur-[20px]  opacity-0 ml-[2.8vw] relative aspect-square overflow-hidden border border-white/10 mt-[8vh]">
             <img
               src="https://res.cloudinary.com/dszlrclik/image/upload/v1776154399/Screenshot_at_2026-04-14_13-42-44_ijsxxu.png"
               alt="Community"
-              className="w-full h-full object-cover rounded-lg  shadow shadow-2xl shadow-amber-500/20 "
+              className="w-full h-full object-cover rounded-lg  shadow shadow-2xl shadow-amber-500/20  "
               referrerPolicy="no-referrer"
             />
             <div className="absolute inset-0 bg-primary/10 mix-blend-overlay" />
