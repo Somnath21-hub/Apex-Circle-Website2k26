@@ -263,7 +263,7 @@ export default function About() {
         scrollTrigger: {
           trigger: leftPanelRef.current,
           pin: true,
-          start: 'top 15%',
+          start: 'top 5%',
           end: 'bottom bottom',
           scrub: true,
           // markers: true,
@@ -286,8 +286,8 @@ export default function About() {
         <div className="absolute inset-0 bg-[linear-gradient(to_right,#80808012_1px,transparent_1px),linear-gradient(to_bottom,#80808012_1px,transparent_1px)] bg-[size:40px_40px] [mask-image:radial-gradient(ellipse_60%_50%_at_50%_0%,#000_70%,transparent_100%)]" />
       </div>
 
-      <div className="max-w-7xl mx-auto relative z-10">
-        <header className="text-center mb-16 md:mb-24 mt-[5vh] flex items-center justify-center flex-col gap-6 md:gap-12">
+      <div className="max-w-7xl mx-auto relative z-10 py-[10vh]">
+        {/* <header className="text-center mb-16 md:mb-24 mt-[5vh] flex items-center justify-center flex-col gap-6 md:gap-12">
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
@@ -310,6 +310,52 @@ export default function About() {
               APEX CIRCLE IS A COLLECTIVE OF LEADERS, DEVELOPERS, DESIGNERS, AND OPERATORS WORKING
               TOGETHER ACROSS TECHNOLOGY, CREATIVITY, AND COMMUNITY TO BUILD, GROW, AND CREATE REAL
               IMPACT.
+            </p>
+          </motion.div>
+        </header> */}
+
+        <header className="mb-16 sm:mb-20 md:mb-28 lg:mb-36  ">
+          <motion.div
+            initial={{ opacity: 0, y: 30 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.9, ease: 'easeOut' }}
+            className="max-w-6xl"
+          >
+            <h1 className="text-[12vw] sm:text-5xl md:text-7xl lg:text-[8rem] xl:text-[9rem] font-poppins font-black tracking-tighter leading-[0.9] uppercase mb-6 sm:mb-10 relative">
+              {/* LINE 1 */}
+              <span className="block text-white drop-shadow-[0_0_25px_rgba(255,255,255,0.4)]">
+                About
+              </span>
+
+              {/* LINE 2 */}
+              <span className=" text-yellow-400 drop-shadow-[0_0_25px_rgba(250,204,21,0.6)]">
+                Apex
+              </span>
+
+              {/* LINE 3 */}
+              <span className=" ml-[2.8vh] text-tertiary drop-shadow-[0_0_25px_rgba(56,189,248,0.6)]">
+                Circle
+              </span>
+
+              {/* Gloss Effect */}
+              <span
+                className="absolute inset-0 pointer-events-none"
+                style={{
+                  background:
+                    'linear-gradient(90deg, transparent 20%, rgba(255,255,255,0.15) 50%, transparent 80%)',
+                  backgroundSize: '200% 100%',
+                  animation: 'glossySweep 5s ease-in-out infinite',
+                }}
+              />
+            </h1>
+
+            {/* DESCRIPTION */}
+            <p className="text-slate-400 text-base sm:text-lg md:text-xl max-w-2xl font-medium leading-relaxed tracking-tight">
+              Apex Circle is a developer-driven community where people come together to learn,
+              build, and grow. It creates a supportive space for sharing knowledge, collaborating on
+              projects, and improving skills step by step. With a focus on consistency and real
+              learning, members are encouraged to turn their ideas into practical solutions and make
+              a meaningful impact.
             </p>
           </motion.div>
         </header>
@@ -372,7 +418,7 @@ export default function About() {
         <div className="flex gap-16 py-40  h-[370vh] min-h-screen relative">
           {/* LEFT */}
           <div ref={leftPanelRef} className="w-1/2 flex-shrink-0">
-            <div className="flex flex-col justify-center rounded-2xl p-8 md:p-12">
+            <div className="flex flex-col justify-center rounded-2xl">
               <h2 className="relative text-5xl md:text-8xl font-poppins font-black tracking-tight leading-[0.9] uppercase pb-4 inline-block mb-[4vh]">
                 <span className="text-white">Our</span>
                 <br />
@@ -380,7 +426,7 @@ export default function About() {
                   Journey
                 </span>
               </h2>
-              <div className="timeline space-y-10">
+              <div className="timeline space-y-6">
                 {[
                   {
                     time: 'Start',
