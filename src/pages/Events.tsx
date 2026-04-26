@@ -14,9 +14,55 @@ import {
   Filter,
   History,
   Star,
+  Code,
+  Wrench,
+  Mic,
 } from 'lucide-react';
 
 const categories = ['All', 'Hackathon', 'Workshop', 'Meetup', 'Conference'];
+
+const categoryData = [
+  {
+    key: 'All',
+    label: 'All Events',
+    short: 'Total',
+    icon: Calendar,
+    description: 'Explore all events across categories',
+    color: 'red',
+  },
+  {
+    key: 'Hackathon',
+    label: 'Hackathons',
+    short: 'Hackathon',
+    icon: Code,
+    description: 'Build, compete, and innovate in intense coding events',
+    color: 'blue',
+  },
+  {
+    key: 'Workshop',
+    label: 'Workshops',
+    short: 'Workshop',
+    icon: Wrench,
+    description: 'Hands-on sessions to learn real-world skills',
+    color: 'yellow',
+  },
+  {
+    key: 'Meetup',
+    label: 'Meetups',
+    short: 'Meetup',
+    icon: Users,
+    description: 'Connect and network with like-minded people',
+    color: 'green',
+  },
+  {
+    key: 'Conference',
+    label: 'Conferences',
+    short: 'Conference',
+    icon: Mic,
+    description: 'Large-scale events with speakers and insights',
+    color: 'purple',
+  },
+];
 
 export default function Events() {
   const [activeCategory, setActiveCategory] = useState('All');
@@ -123,36 +169,6 @@ export default function Events() {
             </div>
           </div>
         </header>
-
-        {/* NEW SECTION: Event Stats Overview */}
-        <section className="grid grid-cols-2 md:grid-cols-4 gap-4 md:gap-8 mb-24 md:mb-32">
-          {[
-            { label: 'Total Events', value: stats.total, icon: Calendar },
-            { label: 'Upcoming', value: stats.upcoming, icon: Zap },
-            { label: 'Participants', value: stats.participants, icon: Users },
-            { label: 'Global Reach', value: stats.reach, icon: Globe },
-          ].map((stat, i) => (
-            <motion.div
-              key={i}
-              initial={{ opacity: 0, y: 20 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              transition={{ delay: i * 0.1 }}
-              className="p-6 md:p-8 bg-white/[0.01] border border-white/5 hover:border-primary/30 transition-all group"
-            >
-              <stat.icon
-                className="text-primary mb-4 group-hover:scale-110 transition-transform"
-                size={20}
-              />
-              <div className="text-3xl md:text-5xl font-brutal tracking-tighter mb-2">
-                {stat.value}
-              </div>
-              <div className="text-[10px] font-black uppercase tracking-widest text-slate-500">
-                {stat.label}
-              </div>
-            </motion.div>
-          ))}
-        </section>
 
         {/* Event Grid */}
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 md:gap-8 mb-24 md:mb-48">
@@ -267,25 +283,54 @@ export default function Events() {
             <div className="h-[1px] flex-1 bg-white/5" />
           </div>
           <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-4 md:gap-6">
-            {categories.map((cat, i) => (
+            {categoryData.map((cat, i) => (
               <motion.button
-                key={cat}
+                key={cat.key}
                 initial={{ opacity: 0, y: 20 }}
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
                 transition={{ delay: i * 0.05 }}
-                onClick={() => setActiveCategory(cat)}
-                className={`p-8 border border-white/10 text-left transition-all group ${activeCategory === cat ? 'bg-primary border-primary' : 'bg-white/[0.02] hover:border-primary/50'}`}
+                onClick={() => setActiveCategory(cat.key)}
+                className={`group relative p-6 md:p-7 border rounded-2xl overflow-hidden backdrop-blur-xl text-left transition-all duration-500
+      ${
+        activeCategory === cat.key
+          ? 'bg-red-500/10 border-red-500 shadow-[0_20px_40px_-15px_rgba(239,68,68,0.25)] scale-[1.03]'
+          : 'bg-[#060b1e]/60 border-white/10 hover:border-red-500 hover:-translate-y-2 hover:shadow-[0_20px_40px_-15px_rgba(239,68,68,0.2)]'
+      }
+    `}
               >
-                <div
-                  className={`text-[10px] font-black uppercase tracking-widest mb-4 ${activeCategory === cat ? 'text-black' : 'text-slate-500'}`}
-                >
-                  {cat === 'All' ? 'Total' : cat}
-                </div>
-                <div
-                  className={`text-4xl font-brutal tracking-tighter ${activeCategory === cat ? 'text-black' : 'text-white'}`}
-                >
-                  {categoryCounts[cat] || 0}
+                {/* Glow */}
+                <div className="absolute inset-0 bg-gradient-to-br from-red-500/5 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
+
+                {/* Top Glow Line */}
+                <div className="absolute top-0 inset-x-0 h-[2px] bg-gradient-to-r from-transparent via-red-500 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-700" />
+
+                {/* Content */}
+                <div className="relative z-10 flex flex-col gap-4">
+                  {/* Icon */}
+                  <div className="p-3 rounded-xl bg-white/5 border border-white/10 w-fit group-hover:border-red-500/40 group-hover:bg-red-500/10 transition-all duration-500">
+                    {cat.icon && (
+                      <cat.icon
+                        size={20}
+                        className="text-slate-300 group-hover:text-red-400 transition-all duration-500"
+                      />
+                    )}
+                  </div>
+
+                  {/* Label */}
+                  <div className="text-[10px] uppercase tracking-widest font-black text-slate-500 group-hover:text-red-400 transition">
+                    {cat.short}
+                  </div>
+
+                  {/* Count */}
+                  <div className="text-3xl md:text-4xl font-poppins font-bold tracking-tighter text-white group-hover:text-red-400 transition">
+                    {categoryCounts[cat.key] || 0}
+                  </div>
+
+                  {/* Optional Description (adds depth) */}
+                  <p className="text-xs text-slate-500 group-hover:text-slate-300 transition line-clamp-2">
+                    {cat.description}
+                  </p>
                 </div>
               </motion.button>
             ))}
