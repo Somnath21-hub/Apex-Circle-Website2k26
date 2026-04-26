@@ -297,8 +297,6 @@ export default function Events() {
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 md:gap-24">
             {/* LEFT COLUMN - Expectations List */}
             <div>
-             
-
               <h2 className="relative text-5xl md:text-8xl font-poppins font-black tracking-tight leading-[0.9] uppercase pb-4 inline-block mb-[4vh]">
                 <span className="text-white"> What to </span>
                 <br />
@@ -405,8 +403,6 @@ export default function Events() {
                   </div>
                 </div>
               </motion.div>
-
-             
             </div>
           </div>
         </section>
