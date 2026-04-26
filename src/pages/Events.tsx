@@ -62,22 +62,40 @@ export default function Events() {
 
       <div className="max-w-7xl mx-auto relative z-10">
         <header className="mb-16 md:mb-24">
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8 }}
-          >
-            <span className="text-primary font-mono text-sm mb-4 block tracking-widest uppercase">
-              // Operation_Schedule
+          <h1 className="text-[12vw] sm:text-5xl md:text-7xl lg:text-[8rem] xl:text-[9rem] font-poppins font-black tracking-tighter leading-[0.9] uppercase mb-6 sm:mb-10 relative">
+            {/* LINE 1 */}
+            <span className="inline text-white drop-shadow-[0_0_25px_rgba(255,255,255,0.4)]">
+              Apex{' '}
             </span>
-            <h1 className="text-5xl sm:text-7xl md:text-[10rem] lg:text-[12rem] font-brutal tracking-tighter leading-[0.8] uppercase mb-8 md:mb-12">
-              Protocol <br /> <span className="text-slate-500">Events</span>
-            </h1>
-            <p className="text-slate-400 text-lg md:text-2xl max-w-2xl font-medium leading-relaxed uppercase tracking-tight">
-              Explore upcoming and past events from the Apex community. A decentralized network of
-              workshops, hackathons, and meetups.
-            </p>
-          </motion.div>
+
+            <span className="inline text-yellow-400 drop-shadow-[0_0_25px_rgba(250,204,21,0.6)]">
+              Circle
+            </span>
+
+            {/* LINE 3 */}
+            <span className="block  text-tertiary drop-shadow-[0_0_25px_rgba(56,189,248,0.6)]">
+              Events
+            </span>
+
+            {/* Optional Tagline */}
+            <span className="block text-base sm:text-lg md:text-xl font-medium text-gray-300 mt-4 tracking-wide normal-case w-1/2">
+              Innovate • Build • Connect — At Apex Circle, we empower individuals to think beyond
+              limits, turn ideas into real-world solutions, and grow through meaningful
+              collaboration. Our events are designed to spark innovation, encourage hands-on
+              building, and create strong connections among passionate creators, enabling
+              participants to learn, share, and evolve together in a fast-paced tech-driven world.
+            </span>
+            {/* Gloss Effect */}
+            <span
+              className="absolute inset-0 pointer-events-none"
+              style={{
+                background:
+                  'linear-gradient(90deg, transparent 20%, rgba(255,255,255,0.15) 50%, transparent 80%)',
+                backgroundSize: '200% 100%',
+                animation: 'glossySweep 5s ease-in-out infinite',
+              }}
+            />
+          </h1>
 
           {/* Search and Filter Bar */}
           <div className="mt-16 md:mt-24 flex flex-col md:flex-row md:items-center justify-between gap-8 border-b border-white/5 pb-12">
@@ -178,8 +196,12 @@ export default function Events() {
         {featuredEvent && (
           <section className="mb-24 md:mb-48">
             <div className="flex items-center gap-6 mb-12">
-              <h2 className="text-3xl md:text-5xl font-brutal uppercase tracking-tighter">
-                Featured <span className="text-slate-500">Spotlight</span>
+              <h2 className="relative text-5xl md:text-8xl font-poppins font-black tracking-tight leading-[0.9] uppercase pb-4 inline-block mb-[4vh]">
+                <span className="text-white">Featured </span>
+                <br />
+                <span className="text-transparent bg-clip-text bg-gradient-to-r from-yellow-300 via-yellow-400 to-yellow-600">
+                  Spotlight
+                </span>
               </h2>
               <div className="h-[1px] flex-1 bg-white/5" />
             </div>
@@ -189,7 +211,7 @@ export default function Events() {
               viewport={{ once: true }}
               className="group relative bg-black border border-white/10 overflow-hidden"
             >
-              <div className="grid grid-cols-1 lg:grid-cols-2">
+              <div className="grid grid-cols-1 lg:grid-cols-2 rounded-md">
                 <div className="aspect-video lg:aspect-auto relative overflow-hidden">
                   <img
                     src={featuredEvent.image}
@@ -198,7 +220,7 @@ export default function Events() {
                   />
                   <div className="absolute inset-0 bg-gradient-to-r from-black via-transparent to-transparent opacity-60" />
                 </div>
-                <div className="p-10 md:p-16 flex flex-col justify-center">
+                <div className="p-10 md:p-16 flex flex-col justify-center bg-black/20">
                   <div className="flex items-center gap-3 text-primary font-mono text-xs mb-8 tracking-widest uppercase">
                     <Star size={14} fill="currentColor" /> Featured Operation
                   </div>
@@ -234,9 +256,14 @@ export default function Events() {
         {/* NEW SECTION: Event Categories Overview */}
         <section className="mb-24 md:mb-48">
           <div className="flex items-center gap-6 mb-12">
-            <h2 className="text-3xl md:text-5xl font-brutal uppercase tracking-tighter">
-              Event <span className="text-slate-500">Categories</span>
+            <h2 className="relative text-5xl md:text-7xl font-poppins font-black tracking-tight leading-[0.9] uppercase pb-4 inline-block mb-[4vh]">
+              <span className="text-white"> Event </span>
+              <br />
+              <span className="text-transparent bg-clip-text bg-gradient-to-r from-yellow-300 via-yellow-400 to-yellow-600">
+                Categories
+              </span>
             </h2>
+
             <div className="h-[1px] flex-1 bg-white/5" />
           </div>
           <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-4 md:gap-6">
@@ -265,29 +292,46 @@ export default function Events() {
           </div>
         </section>
 
-        {/* Event Details (Generic for all events) */}
+        {/* Event Details - What to Expect Section */}
         <section className="mb-24 md:mb-48 py-24 md:py-32 border-y border-white/5 bg-white/[0.01]">
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 md:gap-24">
+            {/* LEFT COLUMN - Expectations List */}
             <div>
-              <span className="text-primary font-mono text-sm mb-8 block tracking-widest uppercase">
-                // Event_Overview
-              </span>
-              <h2 className="text-4xl md:text-7xl font-brutal tracking-tighter uppercase mb-8 md:mb-12">
-                What to <span className="text-slate-500">Expect</span>
+             
+
+              <h2 className="relative text-5xl md:text-8xl font-poppins font-black tracking-tight leading-[0.9] uppercase pb-4 inline-block mb-[4vh]">
+                <span className="text-white"> What to </span>
+                <br />
+                <span className="text-transparent bg-clip-text bg-gradient-to-r from-yellow-300 via-yellow-400 to-yellow-600">
+                  Expect
+                </span>
               </h2>
+
               <div className="space-y-6 md:space-y-8">
                 {[
                   {
                     title: 'Technical Outcomes',
-                    desc: 'Gain deep insights into protocol architecture and deployment strategies.',
+                    desc: 'Gain deep insights into protocol architecture, deployment strategies, and cutting-edge development practices.',
+                    icon: '⚡',
+                    color: 'text-yellow-400',
                   },
                   {
-                    title: 'Networking',
-                    desc: 'Connect with elite engineers and community architects from around the world.',
+                    title: 'Elite Networking',
+                    desc: 'Connect with world-class engineers, community architects, and visionary builders shaping the future.',
+                    icon: '🌐',
+                    color: 'text-primary',
                   },
                   {
-                    title: 'Skills',
-                    desc: 'Master advanced tools like ZK-proofs, L2 scaling, and decentralized identity.',
+                    title: 'Advanced Skills',
+                    desc: 'Master cutting-edge tools including ZK-proofs, L2 scaling, smart contracts, and decentralized systems.',
+                    icon: '🔧',
+                    color: 'text-secondary',
+                  },
+                  {
+                    title: 'Real Impact',
+                    desc: 'Build projects that solve real problems. Many solutions from our events go on to secure funding and deployment.',
+                    icon: '🚀',
+                    color: 'text-tertiary',
                   },
                 ].map((item, i) => (
                   <motion.div
@@ -296,73 +340,73 @@ export default function Events() {
                     whileInView={{ opacity: 1, x: 0 }}
                     viewport={{ once: true }}
                     transition={{ delay: i * 0.1 }}
-                    className="p-6 md:p-8 border border-white/10 bg-black hover:border-primary/50 transition-all group"
+                    className="group p-6 md:p-8 border border-white/10 bg-black/60 hover:border-primary/50 transition-all duration-500 relative overflow-hidden"
                   >
-                    <h4 className="text-xl md:text-2xl font-brutal uppercase tracking-tighter mb-2 text-primary group-hover:translate-x-2 transition-transform">
-                      {item.title}
-                    </h4>
-                    <p className="text-slate-500 text-sm leading-relaxed">{item.desc}</p>
+                    <div className="absolute inset-0 bg-gradient-to-r from-primary/5 to-transparent opacity-0 group-hover:opacity-100 transition-opacity" />
+                    <div className="relative z-10 flex items-start gap-5">
+                      <span className={`text-3xl md:text-4xl ${item.color} drop-shadow-lg`}>
+                        {item.icon}
+                      </span>
+                      <div>
+                        <h4 className="text-xl md:text-2xl font-brutal uppercase tracking-tighter mb-2 text-white group-hover:text-primary transition-colors">
+                          {item.title}
+                        </h4>
+                        <p className="text-slate-400 text-sm leading-relaxed">{item.desc}</p>
+                      </div>
+                    </div>
                   </motion.div>
                 ))}
               </div>
             </div>
-            <div className="space-y-12">
-              <div>
-                <h3 className="text-2xl md:text-3xl font-brutal uppercase tracking-tighter mb-8">
-                  Speakers & Mentors
-                </h3>
-                <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
-                  {[...Array(4)].map((_, i) => (
-                    <motion.div
-                      key={i}
-                      initial={{ opacity: 0, scale: 0.9 }}
-                      whileInView={{ opacity: 1, scale: 1 }}
-                      viewport={{ once: true }}
-                      transition={{ delay: i * 0.1 }}
-                      className="flex items-center gap-4 p-4 border border-white/5 bg-white/[0.02] hover:bg-white/[0.05] transition-colors group"
-                    >
-                      <div className="w-12 h-12 bg-white/10 rounded-full overflow-hidden">
-                        <img
-                          src={`https://i.pravatar.cc/150?u=architect${i}`}
-                          alt="Architect"
-                          className="w-full h-full object-cover grayscale group-hover:grayscale-0 transition-all"
-                        />
-                      </div>
-                      <div>
-                        <div className="text-sm font-brutal uppercase tracking-tighter">
-                          Architect_{i + 1}
-                        </div>
-                        <div className="text-[10px] font-black uppercase tracking-widest text-primary">
-                          Core Team
-                        </div>
-                      </div>
-                    </motion.div>
-                  ))}
-                </div>
-              </div>
-              <div className="p-6 md:p-8 border border-primary/20 bg-primary/5 relative overflow-hidden group">
-                <div className="absolute inset-0 bg-primary/5 opacity-0 group-hover:opacity-100 transition-opacity pointer-events-none" />
-                <h3 className="text-xl md:text-2xl font-brutal uppercase tracking-tighter mb-4 relative z-10">
-                  Pricing & Access
-                </h3>
-                <div className="flex flex-col sm:flex-row justify-between sm:items-end gap-6 mb-8 sm:mb-6 relative z-10">
-                  <div>
-                    <div className="text-[10px] font-black uppercase tracking-widest text-slate-500">
-                      Member Rate
-                    </div>
-                    <div className="text-3xl md:text-4xl font-brutal tracking-tighter">FREE</div>
+
+            {/* RIGHT COLUMN - Visuals & Info */}
+            <div className="space-y-8  flex items-end justify-center">
+              {/* Event Highlights Image Grid */}
+              <motion.div
+                initial={{ opacity: 0, scale: 0.95 }}
+                whileInView={{ opacity: 1, scale: 1 }}
+                viewport={{ once: true }}
+                className="grid grid-cols-2 gap-4 "
+              >
+                <div className="space-y-3 mb-[12vh]">
+                  <div className="aspect-square overflow-hidden rounded-lg border border-white/10 relative group">
+                    <img
+                      src="/src/assets/Image/hackathon.jpg"
+                      alt="Hackathon in action"
+                      className="w-full h-full object-cover grayscale group-hover:grayscale-0 group-hover:scale-110 transition-all duration-700"
+                    />
+                    <div className="absolute inset-0 bg-primary/20 opacity-0 group-hover:opacity-100 transition-opacity" />
                   </div>
-                  <div className="sm:text-right">
-                    <div className="text-[10px] font-black uppercase tracking-widest text-slate-500">
-                      Standard Rate
-                    </div>
-                    <div className="text-3xl md:text-4xl font-brutal tracking-tighter">$49</div>
+                  <div className="aspect-[4/3] overflow-hidden rounded-lg border border-white/10 relative group">
+                    <img
+                      src="/src/assets/Image/workshops.jpg"
+                      alt="Interactive workshop"
+                      className="w-full h-full object-cover grayscale group-hover:grayscale-0 group-hover:scale-110 transition-all duration-700"
+                    />
+                    <div className="absolute inset-0 bg-tertiary/20 opacity-0 group-hover:opacity-100 transition-opacity" />
                   </div>
                 </div>
-                <button className="relative z-10 w-full bg-primary text-black py-4 font-black uppercase tracking-widest text-xs hover:scale-[1.02] active:scale-95 transition-all shadow-[0_0_20px_rgba(var(--primary-rgb),0.2)]">
-                  Secure Access
-                </button>
-              </div>
+                <div className="space-y-4 pt-8">
+                  <div className="aspect-[4/3] overflow-hidden rounded-lg border border-white/10 relative group">
+                    <img
+                      src="/src/assets/Image/community.jpg"
+                      alt="Community networking"
+                      className="w-full h-full object-cover grayscale group-hover:grayscale-0 group-hover:scale-110 transition-all duration-700"
+                    />
+                    <div className="absolute inset-0 bg-secondary/20 opacity-0 group-hover:opacity-100 transition-opacity" />
+                  </div>
+                  <div className="aspect-square overflow-hidden rounded-lg border border-white/10 relative group">
+                    <img
+                      src="/src/assets/Image/CalCuttaHacks.jpg"
+                      alt="Past event highlight"
+                      className="w-full h-full object-cover grayscale group-hover:grayscale-0 group-hover:scale-110 transition-all duration-700"
+                    />
+                    <div className="absolute inset-0 bg-accent/20 opacity-0 group-hover:opacity-100 transition-opacity" />
+                  </div>
+                </div>
+              </motion.div>
+
+             
             </div>
           </div>
         </section>
