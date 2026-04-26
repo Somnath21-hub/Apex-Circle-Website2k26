@@ -43,34 +43,5 @@
     "image": "src/assets/Image/Nomoex.png",
     "duration": "Coming Soon",
     "tags": ["AI/ML", "Web3", "Smart Automation", "Heritage Tech", "Cybersecurity", "Web Dev"]
-  },
-  {
-    "id": "4",
-    "title": "Open Source Sprint: React Ecosystem",
-    "date": "15 Sep 2024",
-    "isFeatured": false,
-    "time": "10:00 AM PST",
-    "type": "Workshop",
-    "status": "Closed",
-    "location": "Remote",
-    "description": "Collaborate with maintainers and contribute to major React libraries while learning advanced open-source workflows.",
-    "image": "https://picsum.photos/seed/react/800/600",
-    "duration": "6 Hours",
-    "tags": ["React", "Open Source", "Frontend"],
-    "seats": 0
-  },
-  {
-    "id": "5",
-    "title": "AI Ethics & Governance Panel",
-    "date": "20 Aug 2024",
-    "time": "5:30 PM PST",
-    "type": "Meetup",
-    "status": "Closed",
-    "location": "San Francisco",
-    "description": "A panel discussion on ethical AI, responsible development, and global governance frameworks shaping the future.",
-    "image": "https://picsum.photos/seed/ethics/800/600",
-    "duration": "2 Hours",
-    "tags": ["AI Ethics", "Policy", "Governance"],
-    "seats": 0
   }
 ]

@@ -185,7 +185,6 @@ export default function About() {
           end: 'bottom 0%',
           scrub: true,
           toggleActions: 'play reverse play reverse',
-          markers: true,
         },
 
         x: -60,

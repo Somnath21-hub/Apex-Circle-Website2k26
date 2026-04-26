@@ -1,13 +1,13 @@
 export type EventType = 'Hackathon' | 'Workshop' | 'Meetup';
 
-export type EventStatus = 'Upcoming' | 'Live' | 'Closed';
+export type EventStatus = 'Upcoming' | 'Live' | 'Closed' | 'Past Event';
 
 export interface Event {
   id: string;
   title: string;
 
-  type: EventType;
-  status: EventStatus;
+  type: EventType | string;
+  status: EventStatus | string;
 
   date: string; // e.g. "12 Mar 2026"
   time: string; // e.g. "10:00 AM"
@@ -20,6 +20,7 @@ export interface Event {
   duration?: string; // "48 Hours"
   tags?: string[]; // ["AI", "Web3"]
   seats?: number; // 120
+  isFeatured?: boolean;
 }
 
 // Contributor Type

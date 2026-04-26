@@ -76,7 +76,7 @@ export default function Community() {
           start: 'top 80%',
           end: 'bottom 0%',
           toggleActions: 'play reverse play reverse',
-          markers: true,
+
           //  pin: true,
         },
         x: 20,
